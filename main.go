@@ -3,6 +3,8 @@ package main
 import (
 	"fmt"
 	"os"
+
+	"github.com/higgyhiggy/project-0/file"
 )
 
 func main() {
@@ -10,6 +12,9 @@ func main() {
 	fmt.Println("sho rururururururur")
 	//asks the env to get user name
 	user := os.Getenv("USER")
-	fmt.Println(file.Create(file, "day 1"), user)
+	fmt.Println(file.)
+
+
+	//fmt.Println(file.Create(file, "day 1"))
 
 }
