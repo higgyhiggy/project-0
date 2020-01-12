@@ -53,7 +53,7 @@ func main() {
 			fmt.Println(word[i].Text)
 		}
 	*/
-	n = len(word)
+	n := len(word)
 
 	guess := rand.Intn(n)
 
