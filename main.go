@@ -12,7 +12,7 @@ func main() {
 	fmt.Println("sho rururururururur")
 	//asks the env to get user name
 	user := os.Getenv("USER")
-	fmt.Println(file.Create(name, "hey"), users)
+	fmt.Println(file.Create(name, "hey"), user)
 
 	//fmt.Println(file.Create(file, "day 1"))
 
