@@ -3,6 +3,7 @@ package main
 import (
 	"fmt"
 	"os"
+	"os/exec"
 	"time"
 
 	"github.com/higgyhiggy/project-0/file"
@@ -18,7 +19,16 @@ func main() {
 	//2 second arg and so on
 	user := os.Getenv("USER")
 	fileName := os.Args[2]
-	fmt.Println(cdate+":"+file.Create(name, fileName), user)
+	s := cdate + ":" + file.Create(name, fileName)
+	fmt.Println(s, user)
+
+	f, _ := os.Create(cdate + ":" + fileName)
+	n2, _ := f.WriteString("an eye for an eye makes the whole world blind.")
+
+	fmt.Println(n2, "bytes written succesffully")
+
+	out, _ := exec.Command("code", s).Output()
+	fmt.Printf("the date is %s\n", out)
 	//fmt.Println(fileName)
 	//fmt.Println(file.Create(file, "day 1"))
 
