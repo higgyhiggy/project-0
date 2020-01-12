@@ -5,8 +5,11 @@ package file
 // but also appending the  date it was create jan 8 , 2020 : "filename"
 func Create(name bool, fname string) string {
 	var n string
+
 	if name {
+
 		n = fname
+
 	} else {
 
 	}
