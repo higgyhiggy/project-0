@@ -4,9 +4,9 @@ import (
 	"flag"
 )
 
-var file bool
+var name bool
 
 func init() {
-	flag.BoolVar(&file, "file", false, "file name to open or create")
+	flag.BoolVar(&name, "file", false, "file name to open or create")
 	flag.Parse()
 }
