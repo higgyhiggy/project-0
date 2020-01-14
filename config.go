@@ -3,7 +3,6 @@ package main
 import (
 	"encoding/json"
 	"flag"
-	"fmt"
 	"math/rand"
 	"net/http"
 	"os"
@@ -26,7 +25,7 @@ func init() {
 
 	flag.BoolVar(&name, "file", false, "file name to open or create")
 	flag.Parse()
-	fmt.Println(len(os.Args))
+	//fmt.Println(len(os.Args))
 	rand.Seed(time.Now().UnixNano())
 	resp, err := http.Get("https://type.fit/api/quotes")
 	if err != nil {
@@ -49,5 +48,5 @@ func init() {
 	if out != nil {
 
 	}
-	Cmdout = "the file created is " + txtname
+	Cmdout = "the file created is " + txtname + "by user " + os.Getenv("USER")
 }

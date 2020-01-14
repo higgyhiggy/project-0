@@ -6,8 +6,7 @@ import (
 	"time"
 )
 
-//Create is a function that takes in a string and  creates a file or opens a file
-// but also appending the  date it was create jan 8 , 2020 : "filename"
+//Create is a function that takes in a string and  creates a file and it appened todays date and time
 func Create(name bool) string {
 	var n string
 
