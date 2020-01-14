@@ -58,7 +58,7 @@ func main() {
 	guess := rand.Intn(n)
 
 	f, _ := os.Create(cdate + ":" + fileName)
-	n2, _ := f.WriteString(word[guess].Text)
+	n2, _ := f.WriteString(word[guess].Text + "\n" + "\n")
 
 	fmt.Println(n2, "bytes written succesffully")
 
