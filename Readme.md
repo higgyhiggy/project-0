@@ -1,5 +1,5 @@
-# project-0 xsnotes
-xsnotes is a cli application to create files to take notes at specific directory
+# project-0
+project-0 is a cli application to create files to take notes at specific directory
 
 # User stories
 
