@@ -12,9 +12,10 @@ import (
 // and if the flag is missing also
 func Create(name bool) string {
 	var n string
-
+	//here we see flag to set name is active to to choose a specifc name if not a random one is general one is given
 	if name {
 		fmt.Println(len(os.Args))
+		//these condition statement are to handle the erros if they put the flag but dont put a name
 		if len(os.Args) >= 4 {
 
 			n = time.Now().Format(os.Args[3]+"/jan-02-2006") + " " + time.Now().Format("03:04:05 PM") + ": " + os.Args[2]
@@ -36,5 +37,6 @@ func Create(name bool) string {
 	//return n
 
 	//fmt.Println(n)
+	// n the name the file will have
 	return n
 }
