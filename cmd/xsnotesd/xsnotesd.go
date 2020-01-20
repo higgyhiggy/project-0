@@ -4,7 +4,6 @@ import (
 	"fmt"
 	"math/rand"
 	"net/http"
-	"time"
 
 	"github.com/higgyhiggy/project-0/config"
 	_ "github.com/higgyhiggy/project-0/config"
@@ -12,6 +11,11 @@ import (
 
 var name string
 
+func check(e error) {
+	if e != nil {
+		panic(e)
+	}
+}
 func main() {
 
 	fmt.Println("Server is running on port 8080")
@@ -27,6 +31,11 @@ func main() {
 		if name == "" {
 			name = "anonymous"
 		}
+		/*
+			dat, err := ioutil.ReadFile(config.Txtname)
+			check(err) */
+
+		//fmt.Print(w, string(dat))
 		fmt.Fprint(w, "<h1>"+config.Word[rand.Intn(len(config.Word))].Text+"</h1>", " ", name)
 	})
 
@@ -34,8 +43,8 @@ func main() {
 
 	})
 	// can make some infinite loop to add some other functionality
-	go http.ListenAndServe(":8080", nil)
+	http.ListenAndServe(":8080", nil)
 
-	time.Sleep(30 * time.Second)
+	//time.Sleep(30 * time.Second)
 
 }
