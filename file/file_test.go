@@ -12,7 +12,7 @@ func TestCreate(t *testing.T) {
 	var args = [4]string{"testfile", "-file", "test", "/temp"}
 	n = time.Now().Format(args[3]+"/jan-02-2006") + " " + time.Now().Format("03:04:05 PM") + ": " + args[2]
 	if name {
-		fmt.Println(len(args))
+		fmt.Println(len(args), "made up array to count as args input from cmd")
 		//these condition statement are to handle the erros if they put the flag but dont put a name
 		if len(args) >= 4 {
 
