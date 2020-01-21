@@ -1,15 +1,19 @@
 package main
 
 import (
+	"bufio"
 	"fmt"
-	"math/rand"
+	"io/ioutil"
 	"net/http"
+	"os"
+	"os/exec"
 
 	"github.com/higgyhiggy/project-0/config"
 	_ "github.com/higgyhiggy/project-0/config"
 )
 
 var name string
+var textt []byte
 
 func check(e error) {
 	if e != nil {
@@ -31,20 +35,51 @@ func main() {
 		if name == "" {
 			name = "anonymous"
 		}
-		/*
-			dat, err := ioutil.ReadFile(config.Txtname)
-			check(err) */
 
-		//fmt.Print(w, string(dat))
-		fmt.Fprint(w, "<h1>"+config.Word[rand.Intn(len(config.Word))].Text+"</h1>", " ", name)
+		fmt.Fprintf(w, string(textt))
+
 	})
 
 	http.HandleFunc("/home", func(w http.ResponseWriter, r *http.Request) {
 
 	})
-	// can make some infinite loop to add some other functionality
-	http.ListenAndServe(":8080", nil)
 
-	//time.Sleep(30 * time.Second)
+	go http.ListenAndServe(":8080", nil)
+	// to be able to out put file context to the terminal
+	reader := bufio.NewReader(os.Stdin)
+	char, _, err := reader.ReadRune()
+	if err != nil {
+		check(err)
+	}
+
+	switch char {
+	case '\n':
+		cmd := exec.Command("cat", config.Txtname)
+		cmd.Stdout = os.Stdout
+		cmd.Stderr = os.Stderr
+		err := cmd.Run()
+
+		if err != nil {
+			check(err)
+		}
+		break
+	}
+
+	//to out put file context to http
+	content, err := ioutil.ReadFile(config.Txtname)
+	if err != nil {
+		check(err)
+	}
+	textt = content
+
+	char, _, err = reader.ReadRune()
+	if err != nil {
+		check(err)
+	}
+	switch char {
+	case '\n':
+
+		break
+	}
 
 }

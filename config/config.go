@@ -65,8 +65,9 @@ func init() {
 
 		}
 	}
-	f.WriteString(strings.ToUpper("lettss see what happens when we add here ") + "\n")
+
 	//sending cmd to be executed to open the file create with desired editor
+
 	out, _ := exec.Command("code", Txtname).Output()
 
 	if out != nil {
@@ -74,4 +75,6 @@ func init() {
 	}
 	Cmdout = "the file created is " + string(Txtname) + " by user " + os.Getenv("USER")
 	fmt.Println(Cmdout)
+	// here is where we handle the cat output to the user
+
 }
