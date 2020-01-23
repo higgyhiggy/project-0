@@ -72,7 +72,7 @@ func init() {
 	out, _ := exec.Command("code", Txtname).Output()
 
 	if out != nil {
-		fmt.Println("the number of byte written to file are " + string(out))
+		//fmt.Println(os.en,"is the creater of the file " + string(out))
 	}
 	Cmdout = "the file created is " + string(Txtname) + " by user " + os.Getenv("USER")
 	fmt.Println(Cmdout)
