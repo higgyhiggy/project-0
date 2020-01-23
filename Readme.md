@@ -14,5 +14,5 @@ project-0 is a cli application to create files to take notes at specific directo
 - [x]environment variables.
 - [x]cli flags.
 - []benchmarking
-- []concurrency.
+- [x]concurrency.
 - [x]api library.

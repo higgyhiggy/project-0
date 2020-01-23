@@ -28,7 +28,8 @@ var Txtname string
 func init() {
 	//flags creates the flags
 	//-file to specify the name of the file
-	flag.BoolVar(&name, "file", false, "file name to open or create")
+	flag.BoolVar(&name, "file", false, "define the file name to open or create: ")
+
 	// parser reads the flags
 	flag.Parse()
 

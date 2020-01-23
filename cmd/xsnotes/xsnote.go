@@ -13,7 +13,19 @@ func main() {
 	resp, _ := http.Get("http://localhost:8080/8ball")
 	body, _ := ioutil.ReadAll(resp.Body)
 	defer resp.Body.Close()
-	fmt.Println("this client can only work if the server is running otherwise it wont.")
-	fmt.Println(string(body))
+	fmt.Println("this client can only work if the server is running otherwise it wont!!!!!\n\n\n")
+	//response := body[892:1059]
+	var i int
+	var v byte
+	prequest := body[916:]
+	for i, v = range prequest {
 
+		if v == 60 {
+			break
+		}
+
+	}
+
+	//fmt.Println(string(body[892:1059]))
+	fmt.Print(string(prequest[:i]))
 }

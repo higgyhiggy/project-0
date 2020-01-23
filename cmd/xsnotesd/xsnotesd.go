@@ -3,6 +3,7 @@ package main
 import (
 	"bufio"
 	"fmt"
+	"html/template"
 	"io/ioutil"
 	"net/http"
 	"os"
@@ -14,6 +15,13 @@ import (
 
 var name string
 var textt []byte
+
+type Mynotes struct {
+	Passing string
+	Fname   string
+}
+
+var Ohtml = Mynotes{"", ""}
 
 func check(e error) {
 	if e != nil {
@@ -27,18 +35,7 @@ func main() {
 	//then handler returns the content of a file system
 	http.Handle("/", http.FileServer(http.Dir("web")))
 	//deals with the handl with the anonymous handler function
-	http.HandleFunc("/8ball", func(w http.ResponseWriter, r *http.Request) {
-		//r is a request to url
-		//we are working with form to be able to use user input
-		//if no name is given then fall back valur will be anonymous
-		name = r.FormValue("name")
-		if name == "" {
-			name = "anonymous"
-		}
-
-		fmt.Fprintf(w, string(textt))
-
-	})
+	http.HandleFunc("/8ball", hee)
 
 	http.HandleFunc("/home", func(w http.ResponseWriter, r *http.Request) {
 
@@ -71,7 +68,8 @@ func main() {
 		check(err)
 	}
 	textt = content
-
+	Ohtml.Passing = string(textt)
+	Ohtml.Fname = string(config.Txtname)
 	char, _, err = reader.ReadRune()
 	if err != nil {
 		check(err)
@@ -82,4 +80,9 @@ func main() {
 		break
 	}
 
+}
+
+func hee(w http.ResponseWriter, r *http.Request) {
+	tmpl := template.Must(template.ParseFiles("web/higgy.html"))
+	tmpl.Execute(w, Ohtml)
 }
