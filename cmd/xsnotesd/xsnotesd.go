@@ -35,7 +35,7 @@ func main() {
 	//then handler returns the content of a file system
 	http.Handle("/", http.FileServer(http.Dir("web")))
 	//deals with the handl with the anonymous handler function
-	http.HandleFunc("/8ball", hee)
+	http.HandleFunc("/xsntt", hee)
 
 	http.HandleFunc("/home", func(w http.ResponseWriter, r *http.Request) {
 
